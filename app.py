@@ -2,6 +2,7 @@ import math
 import random
 
 from flask import Flask, render_template
+from flask import jsonify
 
 
 def distancia(p1, p2):
@@ -83,6 +84,13 @@ def index():
 @app.route('/menu')
 def menu():
     return render_template('menu.html')
+
+@app.route('/iniciar_fase/<int:fase>')
+def iniciar_fase(fase):
+    n_pontos = 50 + (fase - 1) * 10
+    pontos = gerar_pontos(n_pontos)
+    par_correto = encontrar_par_mais_proximo(pontos)
+    return jsonify({"pontos": pontos, "parCorreto": par_correto})
 
 if __name__ == '__main__':
     app.run(debug=True)
