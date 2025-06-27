@@ -1,0 +1,139 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #0a0a1a;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #ffcc00;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+#mapa {
+    width: 600px;
+    height: 400px;
+    background: #111133;
+    margin: 20px auto;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+/* Bordas por fase */
+#mapa.fase-1 { border: 4px solid #0077cc; }
+#mapa.fase-2 { border: 4px solid #28a745; }
+#mapa.fase-3 { border: 4px solid #ffc107; }
+#mapa.fase-4 { border: 4px solid #dc3545; }
+#mapa.fase-5 { border: 4px solid #17a2b8; }
+#mapa.fase-6 { border: 4px solid #6f42c1; }
+#mapa.fase-7 { border: 4px solid #20c997; }
+#mapa.fase-8 { border: 4px solid #6610f2; }
+#mapa.fase-9 { border: 4px solid #fd7e14; }
+#mapa.fase-10 { border: 4px solid #e83e8c; }
+
+.ponto {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+}
+
+.botoes {
+    margin: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #0055aa;
+}
+
+#mensagem {
+    margin: 15px auto;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#mensagem.correto {
+    background: #28a745;
+    color: white;
+    opacity: 1;
+}
+
+#mensagem.errado {
+    background: #dc3545;
+    color: white;
+    opacity: 1;
+}
+
+/* Estilos para o Menu */
+.card {
+    background: rgba(0, 0, 50, 0.3);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid #0077cc;
+}
+
+.card h2 {
+    color: #ffcc00;
+    margin-top: 0;
+}
+
+button#iniciar-jogo {
+    background: #28a745;
+    font-size: 1.2em;
+    padding: 15px 30px;
+    margin-top: 20px;
+}
+
+button#iniciar-jogo:hover {
+    background: #218838;
+}
+
+.ponto {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ponto.selecionado {
+    transform: scale(1.6);
+    box-shadow: 0 0 12px white;
+    z-index: 1;
+}
+
+@media (max-width: 650px) {
+    #mapa {
+        width: 90vw;
+        height: 60vw;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    button {
+        font-size: 1em;
+        padding: 10px;
+    }
+}
