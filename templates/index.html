@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>GeoCloserGame - Tesouro Espacial</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🌌 Tesouro Perdido no Espaço 🌌</h1>
+        <p>Encontre os dois <strong>asteroides mais próximos</strong> para minerar recursos!</p>
+        
+        <div class="info">
+            <p>Fase: <span id="fase">1</span></p>
+            <p>Asteroides: <span id="n-pontos">50</span></p>
+            <p>Pontuação: <span id="pontuacao">0</span></p> <!-- NOVO -->
+        </div>
+
+        <div id="mapa" class="fase-1"></div>
+        <div id="mensagem"></div>
+
+        <div class="botoes">
+            <button id="voltar-menu">Voltar ao Menu</button>
+            <button id="verificar">Verificar</button>
+            <button id="reiniciar">Reiniciar Fase</button>
+            <button id="resetar">Resetar Jogo</button>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
