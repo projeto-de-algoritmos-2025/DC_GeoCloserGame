@@ -26,6 +26,53 @@ def gerar_pontos(n):
             pontos.append(novo_ponto)
     return pontos
 
+def encontrar_par_mais_proximo(pontos):
+    def dist(p1, p2):
+        return distancia((p1["x"], p1["y"]), (p2["x"], p2["y"]))
+
+    def helper(px, py):
+        if len(px) <= 3:
+            min_d = float('inf')
+            par = (0, 1)
+            for i in range(len(px)):
+                for j in range(i + 1, len(px)):
+                    d = dist(px[i], px[j])
+                    if d < min_d:
+                        min_d = d
+                        par = (pontos.index(px[i]), pontos.index(px[j]))
+            return par, min_d
+
+        mid = len(px) // 2
+        Qx = px[:mid]
+        Rx = px[mid:]
+        midpoint = px[mid]["x"]
+        Qy = [p for p in py if p["x"] <= midpoint]
+        Ry = [p for p in py if p["x"] > midpoint]
+
+        (par_esq, d_esq) = helper(Qx, Qy)
+        (par_dir, d_dir) = helper(Rx, Ry)
+
+        d_min = d_esq
+        par_min = par_esq
+        if d_dir < d_min:
+            d_min = d_dir
+            par_min = par_dir
+
+        strip = [p for p in py if abs(p["x"] - midpoint) < d_min]
+        for i in range(len(strip)):
+            for j in range(i+1, min(i+7, len(strip))):
+                d = dist(strip[i], strip[j])
+                if d < d_min:
+                    d_min = d
+                    par_min = (pontos.index(strip[i]), pontos.index(strip[j]))
+
+        return par_min, d_min
+
+    px = sorted(pontos, key=lambda p: p["x"])
+    py = sorted(pontos, key=lambda p: p["y"])
+    par, _ = helper(px, py)
+    return sorted(par)
+
 
 app = Flask(__name__)
 
